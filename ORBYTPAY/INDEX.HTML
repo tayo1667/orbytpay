@@ -1,0 +1,4879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrbytPay - Seamless Transactions Across Africa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#00B04F">
+    <meta name="description" content="OrbytPay - Seamless digital transactions across Africa. Secure, fast, and reliable financial services for individuals and businesses.">
+    <meta name="keywords" content="digital payments, Africa, fintech, mobile money, cryptocurrency, remittance, banking">
+    <meta property="og:title" content="OrbytPay - Seamless Transactions Across Africa">
+    <meta property="og:description" content="Experience the future of digital payments with OrbytPay - your trusted partner for smooth, secure, and instant transactions across all African nations.">
+    <meta property="og:image" content="/og-image.jpg">
+    <meta property="og:url" content="https://orbytpay.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FinancialService",
+        "name": "OrbytPay",
+        "description": "Seamless digital transactions across Africa",
+        "url": "https://orbytpay.com",
+        "logo": "https://orbytpay.com/logo.png",
+        "sameAs": [
+            "https://facebook.com/orbytpay",
+            "https://twitter.com/orbytpay",
+            "https://linkedin.com/company/orbytpay"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+234-800-ORBYT-PAY",
+            "contactType": "customer service",
+            "availableLanguage": ["English", "French", "Arabic", "Swahili", "Hausa", "Yoruba", "Igbo"]
+        },
+        "areaServed": {
+            "@type": "Place",
+            "name": "Africa"
+        },
+        "serviceType": "Digital Payment Services"
+    }
+    </script>
+    <style>
+        /* Dark Mode Variables */
+        [data-theme="dark"] {
+            --primary-green: #00D45A;
+            --dark-green: #00B04F;
+            --light-green: #1A2F1A;
+            --accent-green: #4CAF50;
+            --white: #1A1A1A;
+            --light-gray: #2D2D2D;
+            --medium-gray: #B0B0B0;
+            --dark-gray: #F5F5F5;
+            --text-dark: #FFFFFF;
+            --border-color: #404040;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            z-index: 1001;
+            background: var(--primary-green);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            color: var(--white);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        /* Language Selector */
+        .language-selector {
+            position: relative;
+            margin-right: 1rem;
+        }
+
+        .language-btn {
+            background: none;
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            padding: 0.5rem 1rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .language-btn:hover {
+            border-color: var(--primary-green);
+            color: var(--primary-green);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            min-width: 200px;
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+            z-index: 1000;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .language-dropdown.active {
+            display: block;
+        }
+
+        .language-option {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .language-option:hover {
+            background: var(--light-green);
+        }
+
+        /* Voice Search */
+        .voice-search {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary-green);
+            border: none;
+            border-radius: 50%;
+            color: var(--white);
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .voice-search:hover {
+            transform: scale(1.1);
+            background: var(--dark-green);
+        }
+
+        .voice-search.listening {
+            animation: pulse 1s infinite;
+            background: #ff4444;
+        }
+
+        /* Live Chat Widget */
+        .chat-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .chat-toggle {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-green);
+            border: none;
+            border-radius: 50%;
+            color: var(--white);
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-medium);
+            position: relative;
+        }
+
+        .chat-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .chat-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff4444;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 350px;
+            height: 500px;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: var(--shadow-heavy);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .chat-window.active {
+            display: flex;
+        }
+
+        .chat-header {
+            background: var(--primary-green);
+            color: var(--white);
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chat-body {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            background: var(--light-gray);
+        }
+
+        .chat-message {
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chat-message.user {
+            justify-content: flex-end;
+        }
+
+        .chat-message.bot .message-content {
+            background: var(--white);
+            color: var(--text-dark);
+        }
+
+        .chat-message.user .message-content {
+            background: var(--primary-green);
+            color: var(--white);
+        }
+
+        .message-content {
+            padding: 0.75rem 1rem;
+            border-radius: 15px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .chat-input {
+            padding: 1rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            outline: none;
+        }
+
+        .chat-input button {
+            background: var(--primary-green);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            color: var(--white);
+            cursor: pointer;
+        }
+
+        /* Currency Converter */
+        .currency-converter {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-light);
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .converter-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .converter-form {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 1rem;
+            align-items: end;
+        }
+
+        .currency-input {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .currency-input label {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .input-group {
+            display: flex;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-group:focus-within {
+            border-color: var(--primary-green);
+        }
+
+        .input-group input {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            outline: none;
+            font-size: 1.1rem;
+            background: var(--white);
+            color: var(--text-dark);
+        }
+
+        .currency-select {
+            padding: 1rem;
+            border: none;
+            background: var(--light-green);
+            color: var(--text-dark);
+            cursor: pointer;
+            min-width: 80px;
+        }
+
+        .swap-btn {
+            background: var(--primary-green);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            color: var(--white);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .swap-btn:hover {
+            transform: rotate(180deg);
+        }
+
+        /* Real-time Counter */
+        .live-counter {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .counter-value {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .counter-label {
+            opacity: 0.9;
+        }
+
+        /* Interactive Map */
+        .map-container {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-light);
+            margin: 2rem 0;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, var(--light-green) 0%, var(--white) 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--primary-green);
+            margin-bottom: 1rem;
+        }
+
+        .africa-map {
+            width: 100%;
+            height: 100%;
+            max-width: 600px;
+        }
+
+        .africa-country {
+            fill: var(--primary-green);
+            stroke: var(--white);
+            stroke-width: 1;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .africa-country:hover {
+            fill: var(--dark-green);
+            stroke-width: 2;
+            filter: drop-shadow(0 0 5px rgba(0, 176, 79, 0.5));
+        }
+
+        .map-legend {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow-light);
+            font-size: 0.9rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .legend-color {
+            width: 15px;
+            height: 15px;
+            border-radius: 3px;
+        }
+
+        .map-tooltip {
+            position: absolute;
+            background: var(--dark-gray);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+        }
+
+        .map-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .map-stat {
+            text-align: center;
+            padding: 1rem;
+            background: var(--light-gray);
+            border-radius: 10px;
+        }
+
+        .map-stat h4 {
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Partnership Logos */
+        .partnerships {
+            padding: 60px 0;
+            background: var(--white);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo-slider {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            animation: slide 30s linear infinite;
+        }
+
+        .partner-logo {
+            min-width: 120px;
+            height: 60px;
+            background: var(--light-gray);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--medium-gray);
+            transition: all 0.3s ease;
+        }
+
+        .partner-logo:hover {
+            color: var(--primary-green);
+            transform: scale(1.1);
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Security Badges */
+        .security-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .security-badge-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow-light);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .security-badge-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .badge-icon {
+            font-size: 2rem;
+            color: var(--primary-green);
+        }
+
+        .badge-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* System Status */
+        .system-status {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-light);
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .status-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #00ff00;
+            animation: pulse 2s infinite;
+        }
+
+        .status-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .service-status {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            background: var(--light-gray);
+            border-radius: 8px;
+        }
+
+        .service-name {
+            font-weight: 500;
+        }
+
+        .service-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #00ff00;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+            background: var(--light-gray);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            border: 1px solid var(--border-color);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: var(--light-green);
+        }
+
+        .faq-question.active {
+            background: var(--light-green);
+            color: var(--primary-green);
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer.active {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 200px;
+        }
+
+        /* Blog Section */
+        .blog-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .blog-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            background: var(--light-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary-green);
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--medium-gray);
+        }
+
+        .blog-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .blog-excerpt {
+            color: var(--medium-gray);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .blog-link {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-link:hover {
+            text-decoration: underline;
+        }
+
+        /* API Documentation */
+        .api-section {
+            padding: 80px 0;
+            background: var(--light-gray);
+        }
+
+        .api-preview {
+            background: var(--dark-gray);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+        }
+
+        .api-endpoint {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .endpoint-method {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 1rem;
+        }
+
+        .method-get { background: #4CAF50; color: white; }
+        .method-post { background: #2196F3; color: white; }
+        .method-put { background: #FF9800; color: white; }
+        .method-delete { background: #F44336; color: white; }
+
+        .endpoint-url {
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+        }
+
+        .endpoint-description {
+            margin-top: 0.5rem;
+            color: var(--medium-gray);
+        }
+
+        /* Calculators */
+        .calculator-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .calculator-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 1rem 2rem;
+            border: 2px solid var(--border-color);
+            background: var(--white);
+            color: var(--text-dark);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .tab-button.active {
+            border-color: var(--primary-green);
+            background: var(--primary-green);
+            color: var(--white);
+        }
+
+        .calculator-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-light);
+            border: 1px solid var(--border-color);
+        }
+
+        .calculator-tab {
+            display: none;
+        }
+
+        .calculator-tab.active {
+            display: block;
+        }
+
+        .calculator-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            outline: none;
+            transition: border-color 0.3s ease;
+            background: var(--white);
+            color: var(--text-dark);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: var(--primary-green);
+        }
+
+        .calculator-result {
+            background: var(--light-green);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .result-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-label {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* Video Section */
+        .video-section {
+            padding: 80px 0;
+            background: var(--light-gray);
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .video-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200"><rect width="400" height="200" fill="%23000000"/><rect x="20" y="20" width="360" height="160" fill="%2300B04F" opacity="0.8"/><text x="200" y="90" text-anchor="middle" fill="white" font-family="Arial" font-size="18" font-weight="bold">OrbytPay</text><text x="200" y="120" text-anchor="middle" fill="white" font-family="Arial" font-size="14">Customer Success Story</text></svg>');
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px 10px 0 0;
+            transition: all 0.3s ease;
+        }
+
+        .video-thumbnail:hover {
+            transform: scale(1.02);
+        }
+
+        .video-thumbnail::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 60px;
+            height: 20px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            border-radius: 3px;
+            font-family: Arial, sans-serif;
+        }
+
+        .play-button {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+        }
+
+        .video-info {
+            padding: 1.5rem;
+        }
+
+        .video-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .video-duration {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Performance Indicators */
+        .performance-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--primary-green);
+            z-index: 9999;
+            transition: width 0.3s ease;
+        }
+
+        /* Offline Indicator */
+        .offline-indicator {
+            position: fixed;
+            top: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ff4444;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            display: none;
+            z-index: 1000;
+            animation: slideDown 0.3s ease;
+        }
+
+        .offline-indicator.show {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateX(-50%) translateY(-100%);
+            }
+            to {
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        /* Success Stories */
+        .success-stories {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .story-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-light);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .story-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .story-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .story-info h4 {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .story-info p {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+        }
+
+        .story-content {
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .story-metrics {
+            display: flex;
+            gap: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--medium-gray);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .container-sm {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .text-right { text-align: right; }
+        .mb-1 { margin-bottom: 0.5rem; }
+        .mb-2 { margin-bottom: 1rem; }
+        .mb-3 { margin-bottom: 1.5rem; }
+        .mb-4 { margin-bottom: 2rem; }
+        .mt-1 { margin-top: 0.5rem; }
+        .mt-2 { margin-top: 1rem; }
+        .mt-3 { margin-top: 1.5rem; }
+        .mt-4 { margin-top: 2rem; }
+        .p-1 { padding: 0.5rem; }
+        .p-2 { padding: 1rem; }
+        .p-3 { padding: 1.5rem; }
+        .p-4 { padding: 2rem; }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .animate-fadeInLeft {
+            animation: fadeInLeft 0.8s ease-out;
+        }
+
+        .animate-fadeInRight {
+            animation: fadeInRight 0.8s ease-out;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow-light);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            box-shadow: var(--shadow-medium);
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo i {
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--primary-green);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            min-width: 200px;
+            box-shadow: var(--shadow-medium);
+            border-radius: 8px;
+            padding: 1rem 0;
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: var(--light-green);
+            color: var(--primary-green);
+        }
+
+        .cta-button {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 0.9rem 2rem;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 140px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text {
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--white) 0%, rgba(255,255,255,0.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary-green);
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-medium);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            padding: 1.2rem 2.5rem;
+            border: 2px solid var(--white);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary-green);
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-stat p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: fadeInRight 1s ease-out;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: var(--shadow-heavy);
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            color: rgba(255,255,255,0.3);
+        }
+
+        /* Trust Indicators */
+        .trust-section {
+            background: var(--white);
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .trust-content {
+            text-align: center;
+        }
+
+        .trust-title {
+            font-size: 1.2rem;
+            color: var(--medium-gray);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .trust-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .trust-logo {
+            font-size: 2rem;
+            color: var(--medium-gray);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+
+        .trust-logo:hover {
+            opacity: 1;
+            color: var(--primary-green);
+            transform: scale(1.1);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: var(--light-gray);
+            position: relative;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(180deg, var(--white) 0%, var(--light-gray) 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-subtitle {
+            color: var(--primary-green);
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: var(--medium-gray);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 3rem 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-light);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--light-green);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary-green);
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            background: var(--primary-green);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: var(--medium-gray);
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            background: var(--gradient-light);
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--primary-green) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .service-card:hover {
+            border-color: var(--primary-green);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card p {
+            color: var(--medium-gray);
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            opacity: 0.3;
+        }
+
+        .stats-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 2rem;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--white) 0%, rgba(255,255,255,0.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        .stat-description {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 0.5rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 100px 0;
+            background: var(--light-gray);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 3rem 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-light);
+            position: relative;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .testimonial-quote {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+            font-style: italic;
+            position: relative;
+        }
+
+        .testimonial-quote::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary-green);
+            position: absolute;
+            top: -1rem;
+            left: -1rem;
+            opacity: 0.3;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .author-info h4 {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .author-info p {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Security Section */
+        .security {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .security-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .security-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            font-weight: 800;
+        }
+
+        .security-text p {
+            font-size: 1.1rem;
+            color: var(--medium-gray);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .security-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .security-features li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        .security-features li i {
+            color: var(--primary-green);
+            font-size: 1.2rem;
+        }
+
+        .security-visual {
+            position: relative;
+            text-align: center;
+        }
+
+        .security-badge {
+            display: inline-block;
+            padding: 4rem;
+            background: var(--gradient-light);
+            border-radius: 50%;
+            border: 3px solid var(--primary-green);
+            font-size: 4rem;
+            color: var(--primary-green);
+            animation: pulse 2s infinite;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, transparent 70%);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-gray);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-brand .logo {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-brand p {
+            color: #B0B0B0;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: var(--primary-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--dark-green);
+            transform: translateY(-3px);
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: #B0B0B0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--primary-green);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            color: #888;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-green);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 100%;
+                padding: 0 30px;
+            }
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+            
+            .security-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 120px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .feature-card,
+            .testimonial-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--light-green);
+            border-top: 3px solid var(--primary-green);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-green);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .scroll-top:hover {
+            background: var(--dark-green);
+            transform: translateY(-3px);
+        }
+
+        .scroll-top.visible {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Performance Bar -->
+    <div class="performance-bar" id="performanceBar"></div>
+
+    <!-- Offline Indicator -->
+    <div class="offline-indicator" id="offlineIndicator">
+        <i class="fas fa-wifi"></i> You're currently offline
+    </div>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle" title="Toggle Dark Mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Voice Search -->
+    <button class="voice-search" id="voiceSearch" title="Voice Search">
+        <i class="fas fa-microphone"></i>
+    </button>
+
+    <!-- Live Chat Widget -->
+    <div class="chat-widget">
+        <button class="chat-toggle" id="chatToggle">
+            <i class="fas fa-comments"></i>
+            <span class="chat-badge">3</span>
+        </button>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div>
+                    <h4>Live Support</h4>
+                    <p style="opacity: 0.8; font-size: 0.9rem;">
+                        <span class="status-indicator"></span> 5 agents online
+                    </p>
+                </div>
+                <button id="chatClose" style="background: none; border: none; color: white; font-size: 1.2rem;">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-body" id="chatBody">
+                <div class="chat-message bot">
+                    <div class="message-content">
+                        Hello! I'm Sarah from OrbytPay support. How can I help you today?
+                    </div>
+                </div>
+                <div class="chat-message bot">
+                    <div class="message-content">
+                        I can help you with account setup, transactions, security questions, and more!
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chatInput" placeholder="Type your message...">
+                <button id="chatSend">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <nav class="container">
+            <a href="#" class="logo">
+                <i class="fas fa-coins"></i>
+                OrbytPay
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li class="dropdown">
+                    <a href="#services">Services <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#personal">Personal Banking</a>
+                        <a href="#business">Business Solutions</a>
+                        <a href="#crypto">Crypto Trading</a>
+                        <a href="#remittance">Money Transfer</a>
+                    </div>
+                </li>
+                <li><a href="#security">Security</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <div class="language-selector">
+                    <button class="language-btn" id="languageBtn">
+                        <i class="fas fa-globe"></i>
+                        <span id="currentLang">EN</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="language-dropdown" id="languageDropdown">
+                        <div class="language-option" data-lang="en">
+                            <span>🇺🇸</span> English
+                        </div>
+                        <div class="language-option" data-lang="fr">
+                            <span>🇫🇷</span> Français
+                        </div>
+                        <div class="language-option" data-lang="ar">
+                            <span>🇸🇦</span> العربية
+                        </div>
+                        <div class="language-option" data-lang="sw">
+                            <span>🇰🇪</span> Kiswahili
+                        </div>
+                        <div class="language-option" data-lang="ha">
+                            <span>🇳🇬</span> Hausa
+                        </div>
+                        <div class="language-option" data-lang="yo">
+                            <span>🇳🇬</span> Yorùbá
+                        </div>
+                        <div class="language-option" data-lang="ig">
+                            <span>🇳🇬</span> Igbo
+                        </div>
+                        <div class="language-option" data-lang="am">
+                            <span>🇪🇹</span> አማርኛ
+                        </div>
+                        <div class="language-option" data-lang="pt">
+                            <span>🇦🇴</span> Português
+                        </div>
+                        <div class="language-option" data-lang="zu">
+                            <span>🇿🇦</span> isiZulu
+                        </div>
+                    </div>
+                </div>
+                <a href="#signup" class="cta-button">Get Started</a>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="animate-fadeInUp">Seamless Transactions Across Africa</h1>
+                    <p class="hero-subtitle animate-fadeInUp">Experience the future of digital payments with OrbytPay - your trusted partner for smooth, secure, and instant transactions across all African nations. Connecting communities, empowering businesses, transforming lives.</p>
+                    <div class="hero-buttons animate-fadeInUp">
+                        <a href="#signup" class="btn-primary">
+                            <i class="fas fa-rocket"></i> Start Your Journey
+                        </a>
+                        <a href="#demo" class="btn-secondary">
+                            <i class="fas fa-play"></i> Watch Demo
+                        </a>
+                    </div>
+                    <div class="hero-stats animate-fadeInUp">
+                        <div class="hero-stat">
+                            <h3 id="heroActiveUsers">2.5K</h3>
+                            <p>Active Users</p>
+                        </div>
+                        <div class="hero-stat">
+                            <h3>54</h3>
+                            <p>African Countries</p>
+                        </div>
+                        <div class="hero-stat">
+                            <h3>99.9%</h3>
+                            <p>Uptime</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-image animate-float">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Indicators -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-content">
+                <p class="trust-title">Trusted by leading financial institutions across Africa</p>
+                <div class="trust-logos">
+                    <div class="trust-logo"><i class="fab fa-bitcoin"></i></div>
+                    <div class="trust-logo"><i class="fas fa-university"></i></div>
+                    <div class="trust-logo"><i class="fas fa-shield-alt"></i></div>
+                    <div class="trust-logo"><i class="fas fa-globe-africa"></i></div>
+                    <div class="trust-logo"><i class="fas fa-handshake"></i></div>
+                    <div class="trust-logo"><i class="fas fa-award"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Currency Converter -->
+    <section class="container">
+        <div class="currency-converter">
+            <div class="converter-header">
+                <h3>Live Currency Converter</h3>
+                <p>Get real-time exchange rates across African currencies</p>
+            </div>
+            <div class="converter-form">
+                <div class="currency-input">
+                    <label>From</label>
+                    <div class="input-group">
+                        <input type="number" id="fromAmount" placeholder="1000" value="1000">
+                        <select class="currency-select" id="fromCurrency">
+                            <option value="NGN">NGN</option>
+                            <option value="GHS">GHS</option>
+                            <option value="KES">KES</option>
+                            <option value="ZAR">ZAR</option>
+                            <option value="EGP">EGP</option>
+                            <option value="MAD">MAD</option>
+                            <option value="TND">TND</option>
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="swap-btn" id="swapCurrencies">
+                    <i class="fas fa-exchange-alt"></i>
+                </button>
+                <div class="currency-input">
+                    <label>To</label>
+                    <div class="input-group">
+                        <input type="number" id="toAmount" placeholder="0.00" readonly>
+                        <select class="currency-select" id="toCurrency">
+                            <option value="USD">USD</option>
+                            <option value="NGN">NGN</option>
+                            <option value="GHS">GHS</option>
+                            <option value="KES">KES</option>
+                            <option value="ZAR">ZAR</option>
+                            <option value="EGP">EGP</option>
+                            <option value="MAD">MAD</option>
+                            <option value="TND">TND</option>
+                            <option value="EUR">EUR</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 1rem; color: var(--medium-gray); font-size: 0.9rem;">
+                <i class="fas fa-clock"></i> Rates updated every 30 seconds
+            </p>
+        </div>
+    </section>
+
+    <!-- Real-time Counter -->
+    <section class="container">
+        <div class="live-counter">
+            <div class="counter-value" id="transactionCounter">$284,739</div>
+            <div class="counter-label">Processed in the last 24 hours</div>
+        </div>
+    </section>
+
+    <!-- Interactive Map -->
+    <section class="container">
+        <div class="map-container">
+            <h3>Our African Coverage</h3>
+            <p>Serving customers across all 54 African countries</p>
+            <div class="map-placeholder">
+                <svg class="africa-map" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Simplified Africa Map with Major Countries -->
+                    
+                    <!-- North Africa -->
+                    <path class="africa-country" data-country="Morocco" d="M100,200 L200,180 L250,220 L200,280 L120,260 Z"/>
+                    <path class="africa-country" data-country="Algeria" d="M200,180 L400,160 L420,240 L380,300 L250,220 Z"/>
+                    <path class="africa-country" data-country="Tunisia" d="M400,160 L450,150 L460,200 L420,240 Z"/>
+                    <path class="africa-country" data-country="Libya" d="M450,150 L600,140 L620,220 L580,280 L460,200 Z"/>
+                    <path class="africa-country" data-country="Egypt" d="M600,140 L750,130 L780,200 L740,250 L620,220 Z"/>
+                    
+                    <!-- West Africa -->
+                    <path class="africa-country" data-country="Mauritania" d="M80,280 L200,280 L220,350 L100,370 Z"/>
+                    <path class="africa-country" data-country="Mali" d="M200,280 L350,270 L370,340 L220,350 Z"/>
+                    <path class="africa-country" data-country="Niger" d="M350,270 L500,260 L520,330 L370,340 Z"/>
+                    <path class="africa-country" data-country="Chad" d="M500,260 L620,250 L640,320 L520,330 Z"/>
+                    <path class="africa-country" data-country="Sudan" d="M620,250 L780,240 L800,310 L640,320 Z"/>
+                    
+                    <path class="africa-country" data-country="Senegal" d="M60,350 L120,340 L140,380 L80,390 Z"/>
+                    <path class="africa-country" data-country="Gambia" d="M80,360 L120,355 L125,365 L85,370 Z"/>
+                    <path class="africa-country" data-country="Guinea-Bissau" d="M70,380 L110,375 L115,395 L75,400 Z"/>
+                    <path class="africa-country" data-country="Guinea" d="M110,375 L160,370 L180,410 L115,395 Z"/>
+                    <path class="africa-country" data-country="Sierra Leone" d="M120,410 L160,405 L170,430 L130,435 Z"/>
+                    <path class="africa-country" data-country="Liberia" d="M160,405 L200,400 L210,440 L170,430 Z"/>
+                    <path class="africa-country" data-country="Ivory Coast" d="M200,400 L280,390 L300,450 L210,440 Z"/>
+                    <path class="africa-country" data-country="Ghana" d="M280,390 L340,385 L350,440 L300,450 Z"/>
+                    <path class="africa-country" data-country="Togo" d="M340,385 L365,383 L370,420 L350,440 Z"/>
+                    <path class="africa-country" data-country="Benin" d="M365,383 L400,380 L410,430 L370,420 Z"/>
+                    <path class="africa-country" data-country="Nigeria" d="M400,380 L520,370 L540,450 L410,430 Z"/>
+                    <path class="africa-country" data-country="Cameroon" d="M520,370 L580,365 L600,440 L540,450 Z"/>
+                    
+                    <!-- Central Africa -->
+                    <path class="africa-country" data-country="Central African Republic" d="M580,365 L720,355 L740,420 L600,440 Z"/>
+                    <path class="africa-country" data-country="South Sudan" d="M720,355 L850,345 L870,410 L740,420 Z"/>
+                    <path class="africa-country" data-country="Ethiopia" d="M850,345 L950,340 L970,450 L870,410 Z"/>
+                    
+                    <path class="africa-country" data-country="Equatorial Guinea" d="M540,450 L570,445 L575,465 L545,470 Z"/>
+                    <path class="africa-country" data-country="Gabon" d="M540,470 L600,465 L620,520 L560,525 Z"/>
+                    <path class="africa-country" data-country="Republic of Congo" d="M600,465 L680,460 L700,530 L620,520 Z"/>
+                    <path class="africa-country" data-country="Democratic Republic of Congo" d="M680,460 L820,450 L840,580 L700,530 Z"/>
+                    <path class="africa-country" data-country="Uganda" d="M820,450 L870,445 L880,490 L830,495 Z"/>
+                    <path class="africa-country" data-country="Kenya" d="M870,445 L920,440 L940,520 L880,490 Z"/>
+                    <path class="africa-country" data-country="Somalia" d="M920,440 L980,430 L1000,550 L940,520 Z"/>
+                    
+                    <path class="africa-country" data-country="Rwanda" d="M830,495 L860,490 L865,510 L835,515 Z"/>
+                    <path class="africa-country" data-country="Burundi" d="M835,515 L865,510 L870,535 L840,540 Z"/>
+                    <path class="africa-country" data-country="Tanzania" d="M865,510 L940,500 L960,580 L870,535 Z"/>
+                    
+                    <!-- Southern Africa -->
+                    <path class="africa-country" data-country="Angola" d="M620,520 L760,510 L780,650 L640,660 Z"/>
+                    <path class="africa-country" data-country="Zambia" d="M760,510 L860,500 L880,620 L780,650 Z"/>
+                    <path class="africa-country" data-country="Malawi" d="M880,580 L920,575 L930,630 L890,635 Z"/>
+                    <path class="africa-country" data-country="Mozambique" d="M880,620 L960,610 L980,750 L900,760 Z"/>
+                    
+                    <path class="africa-country" data-country="Namibia" d="M640,660 L740,650 L760,780 L660,790 Z"/>
+                    <path class="africa-country" data-country="Botswana" d="M740,650 L840,640 L860,750 L760,780 Z"/>
+                    <path class="africa-country" data-country="Zimbabwe" d="M840,640 L900,635 L920,720 L860,750 Z"/>
+                    <path class="africa-country" data-country="South Africa" d="M660,790 L860,750 L920,720 L940,850 L680,870 Z"/>
+                    <path class="africa-country" data-country="Lesotho" d="M800,800 L840,795 L845,820 L805,825 Z"/>
+                    <path class="africa-country" data-country="Eswatini" d="M900,750 L930,745 L935,770 L905,775 Z"/>
+                    
+                    <!-- East Africa -->
+                    <path class="africa-country" data-country="Eritrea" d="M850,300 L900,295 L920,340 L870,345 Z"/>
+                    <path class="africa-country" data-country="Djibouti" d="M920,340 L950,335 L955,355 L925,360 Z"/>
+                    
+                    <!-- Island Nations (represented as small circles) -->
+                    <circle class="africa-country" data-country="Madagascar" cx="950" cy="700" r="25"/>
+                    <circle class="africa-country" data-country="Mauritius" cx="980" cy="750" r="8"/>
+                    <circle class="africa-country" data-country="Seychelles" cx="920" cy="450" r="6"/>
+                    <circle class="africa-country" data-country="Comoros" cx="930" cy="650" r="5"/>
+                    <circle class="africa-country" data-country="Cape Verde" cx="50" cy="300" r="8"/>
+                    <circle class="africa-country" data-country="São Tomé and Príncipe" cx="500" cy="480" r="6"/>
+                </svg>
+                
+                <div class="map-legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: var(--primary-green);"></div>
+                        <span>OrbytPay Coverage</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: var(--dark-green);"></div>
+                        <span>High Activity</span>
+                    </div>
+                    <div style="margin-top: 0.5rem; font-weight: 600; color: var(--primary-green);">
+                        54 Countries Covered
+                    </div>
+                </div>
+                
+                <div class="map-tooltip" id="mapTooltip"></div>
+            </div>
+            <div class="map-stats">
+                <div class="map-stat">
+                    <h4>54</h4>
+                    <p>Countries</p>
+                </div>
+                <div class="map-stat">
+                    <h4>2.5K</h4>
+                    <p>Users</p>
+                </div>
+                <div class="map-stat">
+                    <h4>15K+</h4>
+                    <p>Merchants</p>
+                </div>
+                <div class="map-stat">
+                    <h4>20+</h4>
+                    <p>Languages</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- System Status -->
+    <section class="container">
+        <div class="system-status">
+            <div class="status-header">
+                <div class="status-indicator"></div>
+                <h3>All Systems Operational</h3>
+                <span style="color: var(--medium-gray); font-size: 0.9rem;">Last updated: 2 minutes ago</span>
+            </div>
+            <div class="status-services">
+                <div class="service-status">
+                    <span class="service-name">Payment Processing</span>
+                    <div class="service-indicator"></div>
+                </div>
+                <div class="service-status">
+                    <span class="service-name">Mobile App</span>
+                    <div class="service-indicator"></div>
+                </div>
+                <div class="service-status">
+                    <span class="service-name">Web Platform</span>
+                    <div class="service-indicator"></div>
+                </div>
+                <div class="service-status">
+                    <span class="service-name">API Services</span>
+                    <div class="service-indicator"></div>
+                </div>
+                <div class="service-status">
+                    <span class="service-name">Customer Support</span>
+                    <div class="service-indicator"></div>
+                </div>
+                <div class="service-status">
+                    <span class="service-name">Security Systems</span>
+                    <div class="service-indicator"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership Logos -->
+    <section class="partnerships">
+        <div class="container">
+            <h3 style="text-align: center; margin-bottom: 2rem; color: var(--text-dark);">Trusted Partners</h3>
+            <div class="logo-slider">
+                <div class="partner-logo"><i class="fab fa-microsoft"></i></div>
+                <div class="partner-logo"><i class="fab fa-google"></i></div>
+                <div class="partner-logo"><i class="fab fa-twilio"></i></div>
+                <div class="partner-logo"><i class="fas fa-university"></i></div>
+                <div class="partner-logo" style="font-weight: bold; font-family: Arial; font-size: 2rem;">K</div>
+                <div class="partner-logo"><i class="fas fa-shield-alt"></i></div>
+                <div class="partner-logo"><i class="fab fa-paypal"></i></div>
+                <div class="partner-logo"><i class="fas fa-globe"></i></div>
+                <div class="partner-logo"><i class="fab fa-bitcoin"></i></div>
+                <div class="partner-logo"><i class="fas fa-handshake"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Why Choose OrbytPay</p>
+                <h2 class="section-title">Revolutionizing African Finance</h2>
+                <p class="section-description">
+                    We're building the financial infrastructure that Africa deserves. Our cutting-edge technology, 
+                    combined with deep local expertise, delivers unparalleled financial services across the continent.
+                </p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card animate-fadeInUp">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Lightning Fast Transactions</h3>
+                    <p>Process payments in under 2 seconds with our advanced blockchain technology and optimized network infrastructure. Experience the speed of tomorrow, today.</p>
+                </div>
+                <div class="feature-card animate-fadeInUp">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Military-Grade Security</h3>
+                    <p>Your funds and data are protected with end-to-end encryption, multi-factor authentication, and biometric security protocols that exceed international banking standards.</p>
+                </div>
+                <div class="feature-card animate-fadeInUp">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile-First Design</h3>
+                    <p>Built specifically for Africa's mobile-first economy with intuitive apps that work seamlessly on any device, even with limited internet connectivity.</p>
+                </div>
+                <div class="feature-card animate-fadeInUp">
+                    <div class="feature-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3>Transparent Low Fees</h3>
+                    <p>Enjoy some of the lowest transaction fees across Africa with complete transparency. No hidden charges, no surprises - just honest, affordable financial services.</p>
+                </div>
+                <div class="feature-card animate-fadeInUp">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe-africa"></i>
+                    </div>
+                    <h3>Pan-African Coverage</h3>
+                    <p>Seamlessly transact across all 54 African countries with support for local currencies, payment methods, and regulatory compliance in each nation.</p>
+                </div>
+                <div class="feature-card animate-fadeInUp">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Multilingual Support</h3>
+                    <p>Round-the-clock customer support in over 20 African languages, ensuring you always have help when you need it, in the language you prefer.</p>
+                </div>
+                <div class="feature-card animate-fadeInUp">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Smart Analytics</h3>
+                    <p>Gain insights into your spending patterns, investment opportunities, and financial health with our AI-powered analytics and personalized recommendations.</p>
+                </div>
+                <div class="feature-card animate-fadeInUp">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community Banking</h3>
+                    <p>Join savings groups, participate in community investments, and access microfinance options designed specifically for African communities and traditions.</p>
+                </div>
+                <div class="feature-card animate-fadeInUp">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Sustainable Finance</h3>
+                    <p>Support green initiatives and sustainable development across Africa with our eco-friendly transaction processing and carbon-neutral operations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Our Services</p>
+                <h2 class="section-title">Complete Financial Solutions</h2>
+                <p class="section-description">
+                    From personal banking to business solutions, we offer a comprehensive suite of financial services 
+                    tailored to meet the unique needs of individuals and businesses across Africa.
+                </p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3>Digital Wallet</h3>
+                    <p>Store, send, and receive money instantly with our secure digital wallet. Support for multiple currencies and seamless integration with local payment systems.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3>Currency Exchange</h3>
+                    <p>Exchange between African currencies at competitive rates with real-time market pricing and instant settlement across all supported countries.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Business Banking</h3>
+                    <p>Comprehensive business solutions including merchant services, payroll management, invoicing, and working capital financing for African businesses.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3>International Remittance</h3>
+                    <p>Send money to family and friends across Africa and globally with competitive exchange rates and transparent fees. Fast, secure, and reliable.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Investment Platform</h3>
+                    <p>Access African stock markets, government bonds, and investment opportunities with our integrated trading platform and expert financial advice.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Microfinance</h3>
+                    <p>Access small loans, savings products, and financial education designed to support entrepreneurship and financial inclusion across African communities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-content">
+                <div class="section-header">
+                    <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Our Impact</p>
+                    <h2 class="section-title" style="color: white;">Transforming African Finance</h2>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number" id="activeUsers">2.5K</div>
+                        <div class="stat-label">Active Users</div>
+                        <div class="stat-description">Across 54 African countries</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="transactionsProcessed">$2.8B</div>
+                        <div class="stat-label">Transactions Processed</div>
+                        <div class="stat-description">In the last 3 months</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">99.99%</div>
+                        <div class="stat-label">Uptime Guarantee</div>
+                        <div class="stat-description">Reliable 24/7 service</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1.2s</div>
+                        <div class="stat-label">Average Transaction Time</div>
+                        <div class="stat-description">Lightning-fast processing</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15K+</div>
+                        <div class="stat-label">Business Partners</div>
+                        <div class="stat-description">Merchants and institutions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">20+</div>
+                        <div class="stat-label">Local Languages</div>
+                        <div class="stat-description">Multilingual support</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Testimonials -->
+    <section class="video-section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Customer Stories</p>
+                <h2 class="section-title">Video Testimonials</h2>
+                <p class="section-description">
+                    Watch real customers share their OrbytPay success stories
+                </p>
+            </div>
+            
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-thumbnail" onclick="window.open('https://www.youtube.com/shorts/_GaeFHryqpA', '_blank')">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">How OrbytPay Transformed My Business</div>
+                        <div class="video-duration">3:45 • Amina Mohammed, Lagos</div>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-thumbnail" onclick="window.open('https://www.youtube.com/shorts/_GaeFHryqpA', '_blank')">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">Sending Money Home Made Easy</div>
+                        <div class="video-duration">2:30 • Kwame Asante, Accra</div>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-thumbnail" onclick="window.open('https://www.youtube.com/shorts/_GaeFHryqpA', '_blank')"></div>
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">Secure Crypto Trading Experience</div>
+                        <div class="video-duration">4:12 • Sarah Okafor, Nairobi</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="success-stories">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Case Studies</p>
+                <h2 class="section-title">Success Stories</h2>
+                <p class="section-description">
+                    Discover how businesses across Africa are thriving with OrbytPay
+                </p>
+            </div>
+            
+            <div class="story-grid">
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-avatar">TL</div>
+                        <div class="story-info">
+                            <h4>TechLogistics Ltd</h4>
+                            <p>E-commerce Platform • Nigeria</p>
+                        </div>
+                    </div>
+                    <div class="story-content">
+                        "Switching to OrbytPay reduced our payment processing costs by 25% and improved our customer satisfaction scores significantly. The seamless integration and reliable service have been game-changers for our business."
+                    </div>
+                    <div class="story-metrics">
+                        <div class="metric">
+                            <div class="metric-value">25%</div>
+                            <div class="metric-label">Cost Reduction</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">98%</div>
+                            <div class="metric-label">Success Rate</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">2.1s</div>
+                            <div class="metric-label">Avg Processing</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-avatar">AG</div>
+                        <div class="story-info">
+                            <h4>AfriGrow Microfinance</h4>
+                            <p>Financial Services • Kenya</p>
+                        </div>
+                    </div>
+                    <div class="story-content">
+                        "OrbytPay's API integration allowed us to automate loan disbursements and collections across 12 African countries. We've processed over $2.8M in transactions with zero security incidents."
+                    </div>
+                    <div class="story-metrics">
+                        <div class="metric">
+                            <div class="metric-value">$2.8M</div>
+                            <div class="metric-label">Processed</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">12</div>
+                            <div class="metric-label">Countries</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">0</div>
+                            <div class="metric-label">Security Issues</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-avatar">RM</div>
+                        <div class="story-info">
+                            <h4>RemitMax Services</h4>
+                            <p>Money Transfer • Ghana</p>
+                        </div>
+                    </div>
+                    <div class="story-content">
+                        "Our customers love the transparency and speed of OrbytPay. We've seen a 300% increase in transaction volume since partnering with them, and customer complaints have dropped to nearly zero."
+                    </div>
+                    <div class="story-metrics">
+                        <div class="metric">
+                            <div class="metric-value">300%</div>
+                            <div class="metric-label">Volume Growth</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">99.8%</div>
+                            <div class="metric-label">Satisfaction</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">24/7</div>
+                            <div class="metric-label">Support</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog-section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Insights</p>
+                <h2 class="section-title">Latest News & Updates</h2>
+                <p class="section-description">
+                    Stay informed about fintech trends, product updates, and industry insights
+                </p>
+            </div>
+            
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="fas fa-calendar"></i> Dec 20, 2024</span>
+                            <span><i class="fas fa-tag"></i> Fintech</span>
+                        </div>
+                        <div class="blog-title">The Future of Digital Payments in Africa</div>
+                        <div class="blog-excerpt">
+                            Exploring how mobile money and blockchain technology are reshaping the financial landscape across African nations...
+                        </div>
+                        <a href="#" class="blog-link" data-blog="digital-payments-africa"></a>
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="fas fa-calendar"></i> Dec 18, 2024</span>
+                            <span><i class="fas fa-tag"></i> Security</span>
+                        </div>
+                        <div class="blog-title">Enhanced Security Features Now Live</div>
+                        <div class="blog-excerpt">
+                            We've launched advanced biometric authentication and AI-powered fraud detection to keep your transactions even safer...
+                        </div>
+                        <a href="#" class="blog-link" data-blog="security-features"></a>
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-globe-africa"></i>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="fas fa-calendar"></i> Dec 15, 2024</span>
+                            <span><i class="fas fa-tag"></i> Expansion</span>
+                        </div>
+                        <div class="blog-title">OrbytPay Expands to 10 New African Countries</div>
+                        <div class="blog-excerpt">
+                            We're excited to announce our expansion into Central and East African markets, bringing our services to thousands more users...
+                        </div>
+                        <a href="#" class="blog-link" data-blog="expansion-announcement"></a>
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#" class="btn-primary">View All Articles</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Section -->
+    <section class="security" id="security">
+        <div class="container">
+            <div class="security-content">
+                <div class="security-text">
+                    <h2>Bank-Level Security You Can Trust</h2>
+                    <p>
+                        Your financial security is our top priority. We employ multiple layers of protection, 
+                        from advanced encryption to biometric authentication, ensuring your money and data 
+                        remain safe at all times.
+                    </p>
+                    <ul class="security-features">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            256-bit SSL encryption for all transactions
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            Multi-factor authentication with biometric support
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            Real-time fraud monitoring and prevention
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            Regulatory compliance across all African markets
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            Cold storage for digital assets and cryptocurrencies
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            24/7 security monitoring and incident response
+                        </li>
+                    </ul>
+                    <a href="#security-details" class="btn-primary" style="display: inline-block; margin-top: 1rem;">
+                        Learn More About Our Security
+                    </a>
+                </div>
+                <div class="security-visual">
+                    <div class="security-badge">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Security Badges -->
+            <div class="security-badges">
+                <div class="security-badge-item">
+                    <div class="badge-icon"><i class="fas fa-certificate"></i></div>
+                    <div class="badge-text">ISO 27001 Certified</div>
+                </div>
+                <div class="security-badge-item">
+                    <div class="badge-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="badge-text">PCI DSS Compliant</div>
+                </div>
+                <div class="security-badge-item">
+                    <div class="badge-icon"><i class="fas fa-lock"></i></div>
+                    <div class="badge-text">256-bit Encryption</div>
+                </div>
+                <div class="security-badge-item">
+                    <div class="badge-icon"><i class="fas fa-eye"></i></div>
+                    <div class="badge-text">24/7 Monitoring</div>
+                </div>
+                <div class="security-badge-item">
+                    <div class="badge-icon"><i class="fas fa-fingerprint"></i></div>
+                    <div class="badge-text">Biometric Auth</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="calculator-section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Financial Tools</p>
+                <h2 class="section-title">Smart Calculators</h2>
+                <p class="section-description">
+                    Make informed financial decisions with our advanced calculators
+                </p>
+            </div>
+            
+            <div class="calculator-tabs">
+                <button class="tab-button active" data-tab="pricing">Pricing Calculator</button>
+                <button class="tab-button" data-tab="roi">ROI Calculator</button>
+                <button class="tab-button" data-tab="comparison">Price Comparison</button>
+            </div>
+            
+            <div class="calculator-content">
+                <div id="pricing-calculator" class="calculator-tab active" style="display: block;"></div>
+                    <h3>Transaction Pricing Calculator</h3>
+                    <div class="calculator-form">
+                        <div class="form-group">
+                            <label>Transaction Amount</label>
+                            <input type="number" id="transactionAmount" placeholder="1000" value="1000">
+                        </div>
+                        <div class="form-group">
+                            <label>Transaction Type</label>
+                            <select id="transactionType">
+                                <option value="domestic">Domestic Transfer</option>
+                                <option value="international">International Transfer</option>
+                                <option value="crypto">Crypto Exchange</option>
+                                <option value="merchant">Merchant Payment</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Currency</label>
+                            <select id="pricingCurrency">
+                                <option value="NGN">Nigerian Naira (NGN)</option>
+                                <option value="GHS">Ghanaian Cedi (GHS)</option>
+                                <option value="KES">Kenyan Shilling (KES)</option>
+                                <option value="ZAR">South African Rand (ZAR)</option>
+                                <option value="USD">US Dollar (USD)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="calculator-result">
+                        <div class="result-value" id="pricingResult">$2.50</div>
+                        <div class="result-label">Total Transaction Fee</div>
+                    </div>
+                </div>
+                
+                <div id="roi-calculator" class="calculator-tab" style="display: none;"></div>
+                    <h3>Business ROI Calculator</h3>
+                    <div class="calculator-form">
+                        <div class="form-group">
+                            <label>Monthly Transaction Volume</label>
+                            <input type="number" id="monthlyVolume" placeholder="50000" value="50000">
+                        </div>
+                        <div class="form-group">
+                            <label>Current Payment Provider Fee (%)</label>
+                            <input type="number" id="currentFee" placeholder="3.5" value="3.5" step="0.1">
+                        </div>
+                        <div class="form-group">
+                            <label>OrbytPay Fee (%)</label>
+                            <input type="number" id="orbytFee" placeholder="1.8" value="1.8" step="0.1">
+                        </div>
+                    </div>
+                    <div class="calculator-result">
+                        <div class="result-value" id="roiResult">$850</div>
+                        <div class="result-label">Monthly Savings with OrbytPay</div>
+                    </div>
+                </div>
+                
+                <div id="comparison-calculator" class="calculator-tab" style="display: none;"></div>
+                    <h3>Price Comparison Tool</h3>
+                    <div class="calculator-form">
+                        <div class="form-group">
+                            <label>Send Amount</label>
+                            <input type="number" id="compareAmount" placeholder="1000" value="1000">
+                        </div>
+                        <div class="form-group">
+                            <label>From Country</label>
+                            <select id="fromCountry">
+                                <option value="NG">Nigeria</option>
+                                <option value="GH">Ghana</option>
+                                <option value="KE">Kenya</option>
+                                <option value="ZA">South Africa</option>
+                                <option value="EG">Egypt</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>To Country</label>
+                            <select id="toCountry">
+                                <option value="US">United States</option>
+                                <option value="UK">United Kingdom</option>
+                                <option value="CA">Canada</option>
+                                <option value="GH">Ghana</option>
+                                <option value="KE">Kenya</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 2rem;">
+                        <div class="calculator-result">
+                            <div class="result-value" style="color: var(--primary-green);" id="orbytFeeResult">$12.50</div>
+                            <div class="result-label">OrbytPay Fee</div>
+                        </div>
+                        <div class="calculator-result" style="background: #ffebee;">
+                            <div class="result-value" style="color: #f44336;" id="competitorFeeResult">$28.75</div>
+                            <div class="result-label">Competitor Average</div>
+                        </div>
+                        <div class="calculator-result" style="background: #e8f5e8;">
+                            <div class="result-value" style="color: var(--primary-green);" id="savingsResult">$16.25</div>
+                            <div class="result-label">You Save</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Support</p>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-description">
+                    Find answers to common questions about OrbytPay services
+                </p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How secure are my transactions with OrbytPay?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>OrbytPay uses bank-level security with 256-bit SSL encryption, multi-factor authentication, and real-time fraud monitoring. All transactions are protected by multiple layers of security protocols that exceed international banking standards.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Which African countries does OrbytPay support?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>OrbytPay operates across all 54 African countries, supporting local currencies, payment methods, and regulatory requirements in each nation. We're continuously expanding our services to better serve the African continent.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What are the transaction fees?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our fees are transparent and competitive. Domestic transfers start from 0.5%, international transfers from 1.2%, and crypto exchanges from 0.8%. Use our pricing calculator above for exact fees based on your transaction details.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How long do transactions take to process?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Most transactions are processed instantly or within 2 seconds. International transfers may take 1-3 business days depending on the destination country and local banking regulations.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I use OrbytPay for business transactions?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! OrbytPay offers comprehensive business solutions including merchant services, payroll management, bulk payments, API integration, and dedicated business support. Contact our business team for customized solutions.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is customer support available 24/7?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, our customer support team is available 24/7 through live chat, phone, and email. We provide support in over 20 African languages to ensure you can get help in your preferred language.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- API Documentation Preview -->
+    <section class="api-section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">For Developers</p>
+                <h2 class="section-title">Powerful APIs</h2>
+                <p class="section-description">
+                    Integrate OrbytPay's payment infrastructure into your applications with our robust APIs
+                </p>
+            </div>
+            
+            <div class="api-preview">
+                <h4 style="margin-bottom: 1rem; color: #00ff00;">OrbytPay API Endpoints</h4>
+                <div style="background: var(--white); color: var(--text-dark); padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">
+                    <div class="api-endpoint">
+                        <span class="endpoint-method method-post">POST</span>
+                        <span class="endpoint-url">/api/v1/transactions</span>
+                        <div class="endpoint-description">Create a new transaction</div>
+                    </div>
+                    <div class="api-endpoint">
+                        <span class="endpoint-method method-get">GET</span>
+                        <span class="endpoint-url">/api/v1/transactions/{id}</span>
+                        <div class="endpoint-description">Get transaction details</div>
+                    </div>
+                    <div class="api-endpoint">
+                        <span class="endpoint-method method-get">GET</span>
+                        <span class="endpoint-url">/api/v1/rates</span>
+                        <div class="endpoint-description">Get current exchange rates</div>
+                    </div>
+                    <div class="api-endpoint">
+                        <span class="endpoint-method method-post">POST</span>
+                        <span class="endpoint-url">/api/v1/webhooks</span>
+                        <div class="endpoint-description">Configure webhook endpoints</div>
+                    </div>
+                </div>
+                
+                <div style="background: #1a1a1a; color: #00ff00; padding: 1rem; border-radius: 10px; font-family: monospace;">
+                    <div>curl -X POST https://api.orbytpay.com/v1/transactions \</div>
+                    <div>  -H "Authorization: Bearer YOUR_API_KEY" \</div>
+                    <div>  -H "Content-Type: application/json" \</div>
+                    <div>  -d '{</div>
+                    <div>    "amount": 1000,</div>
+                    <div>    "currency": "NGN",</div>
+                    <div>    "recipient": "customer@orbytpay.com",</div>
+                    <div>    "description": "Payment for services"</div>
+                    <div>  }'</div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="#" class="btn-primary" id="viewDocsBtn">View Full Documentation</a>
+                    <a href="#" class="btn-secondary" style="margin-left: 1rem;" id="trySandboxBtn">Try in Sandbox</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="signup">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Financial Future?</h2>
+                <p>
+                    Join thousands of Africans who trust OrbytPay for their daily financial needs. 
+                    Experience seamless transactions, secure banking, and innovative financial services 
+                    designed specifically for Africa.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn-primary">
+                        <i class="fas fa-user-plus"></i> Create Free Account
+                    </a>
+                    <a href="#" class="btn-secondary">
+                        <i class="fas fa-download"></i> Download Mobile App
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <i class="fas fa-coins"></i>
+                        OrbytPay
+                    </div>
+                    <p>
+                        Revolutionizing digital payments across Africa with seamless, secure, and instant transactions. 
+                        Connecting communities, empowering businesses, transforming lives.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="#">Digital Wallet</a></li>
+                        <li><a href="#">Mobile App</a></li>
+                        <li><a href="#">Web Platform</a></li>
+                        <li><a href="#">Business Solutions</a></li>
+                        <li><a href="#">API Integration</a></li>
+                        <li><a href="#">Investment Platform</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Money Transfer</a></li>
+                        <li><a href="#">Currency Exchange</a></li>
+                        <li><a href="#">Microfinance</a></li>
+                        <li><a href="#">Community Banking</a></li>
+                        <li><a href="#">Merchant Services</a></li>
+                        <li><a href="#">Investment Advisory</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Live Chat</a></li>
+                        <li><a href="#">Security Center</a></li>
+                        <li><a href="#">Status Page</a></li>
+                        <li><a href="#">Developer Docs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press & Media</a></li>
+                        <li><a href="#">Investor Relations</a></li>
+                        <li><a href="#">Partnerships</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 OrbytPay. All rights reserved. Licensed and regulated across Africa.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                    <a href="#">Regulatory Information</a>
+                    <a href="#">Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // Loading screen
+        window.addEventListener('load', function() {
+            const loading = document.getElementById('loading');
+            setTimeout(() => {
+                loading.classList.add('hidden');
+            }, 1000);
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            const scrollTop = document.getElementById('scrollTop');
+            
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+                scrollTop.classList.add('visible');
+            } else {
+                header.classList.remove('scrolled');
+                scrollTop.classList.remove('visible');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll to top functionality
+        document.getElementById('scrollTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            const icon = this.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.animate-fadeInUp, .animate-fadeInLeft, .animate-fadeInRight').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(el);
+        });
+
+        // Counter animation for stats
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            
+            function updateCounter() {
+                start += increment;
+                if (start < target) {
+                    element.textContent = Math.floor(start).toLocaleString();
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target.toLocaleString();
+                }
+            }
+            updateCounter();
+        }
+
+        // Animate counters when stats section is visible
+        const statsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('.stat-number');
+                    counters.forEach(counter => {
+                        const target = counter.textContent.replace(/[^\d.]/g, '');
+                        const numericTarget = parseFloat(target);
+                        if (!isNaN(numericTarget)) {
+                            counter.textContent = '0';
+                            setTimeout(() => {
+                                animateCounter(counter, numericTarget);
+                            }, 500);
+                        }
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Form validation and submission
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        // Add hover effects to cards
+        document.querySelectorAll('.feature-card, .service-card, .testimonial-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Dynamic copyright year
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentYear = new Date().getFullYear();
+            const copyrightElements = document.querySelectorAll('.footer-bottom p');
+            copyrightElements.forEach(element => {
+                if (element.textContent.includes('2026')) {
+                    element.textContent = element.textContent.replace('2026', '2026');
+                }
+            });
+        });
+
+        // Auto-updating Statistics System
+        class StatisticsUpdater {
+            constructor() {
+                this.initializeStats();
+                this.startUpdating();
+            }
+
+            initializeStats() {
+                // Get the current date for calculations
+                const now = new Date();
+                
+                // Initialize base values (stored in localStorage to persist across sessions)
+                if (!localStorage.getItem('orbytpay_stats_initialized')) {
+                    const baseStats = {
+                        activeUsers: 2500, // Starting at 2.5K users
+                        transactionsValue: 2.8, // Starting at $2.8B
+                        lastUpdate: now.getTime(),
+                        daysSinceStart: 0
+                    };
+                    localStorage.setItem('orbytpay_base_stats', JSON.stringify(baseStats));
+                    localStorage.setItem('orbytpay_stats_initialized', 'true');
+                }
+            }
+
+            getCurrentStats() {
+                const baseStats = JSON.parse(localStorage.getItem('orbytpay_base_stats'));
+                const now = new Date();
+                const daysSinceLastUpdate = Math.floor((now.getTime() - baseStats.lastUpdate) / (1000 * 60 * 60 * 24));
+                
+                // Calculate new values
+                const newActiveUsers = baseStats.activeUsers + (daysSinceLastUpdate * 50); // 50 new users per day
+                const dailyTransactionIncrease = 0.002; // $2M per day increase
+                const newTransactionsValue = baseStats.transactionsValue + (daysSinceLastUpdate * dailyTransactionIncrease);
+                
+                return {
+                    activeUsers: newActiveUsers,
+                    transactionsValue: newTransactionsValue,
+                    daysSinceLastUpdate: daysSinceLastUpdate
+                };
+            }
+
+            formatNumber(num) {
+                if (num >= 1000000) {
+                    return (num / 1000000).toFixed(1) + 'M';
+                } else if (num >= 1000) {
+                    return (num / 1000).toFixed(1) + 'K';
+                }
+                return num.toString();
+            }
+
+            formatCurrency(num) {
+                return '$' + num.toFixed(1) + 'B';
+            }
+
+            updateDisplay() {
+                const stats = this.getCurrentStats();
+                
+                // Update Active Users in main stats
+                const activeUsersElement = document.getElementById('activeUsers');
+                if (activeUsersElement) {
+                    activeUsersElement.textContent = this.formatNumber(stats.activeUsers);
+                }
+                
+                // Update Active Users in hero section
+                const heroActiveUsersElement = document.getElementById('heroActiveUsers');
+                if (heroActiveUsersElement) {
+                    heroActiveUsersElement.textContent = this.formatNumber(stats.activeUsers);
+                }
+                
+                // Update Transactions Processed
+                const transactionsElement = document.getElementById('transactionsProcessed');
+                if (transactionsElement) {
+                    transactionsElement.textContent = this.formatCurrency(stats.transactionsValue);
+                }
+
+                // Update the real-time counter as well
+                const transactionCounter = document.getElementById('transactionCounter');
+                if (transactionCounter) {
+                    // This updates more frequently for visual effect
+                    const dailyAmount = stats.transactionsValue * 1000000000 / 90; // Convert to daily amount
+                    const currentDailyAmount = (dailyAmount / 10) + (Math.random() * 10000); // Reduced by factor of 10
+                    transactionCounter.textContent = '$' + Math.floor(currentDailyAmount).toLocaleString();
+                }
+            }
+
+            startUpdating() {
+                // Update immediately
+                this.updateDisplay();
+                
+                // Update every hour
+                setInterval(() => {
+                    this.updateDisplay();
+                }, 60 * 60 * 1000); // 1 hour
+                
+                // Update the real-time counter every 30 seconds for visual effect
+                setInterval(() => {
+                    const transactionCounter = document.getElementById('transactionCounter');
+                    if (transactionCounter) {
+                        const currentValue = parseInt(transactionCounter.textContent.replace(/[$,]/g, ''));
+                        const increment = Math.floor(Math.random() * 500) + 100; // Reduced increment between 100-600
+                        const newValue = currentValue + increment;
+                        transactionCounter.textContent = '$' + newValue.toLocaleString();
+                    }
+                }, 30000); // 30 seconds
+
+                // Save updated stats to localStorage daily
+                setInterval(() => {
+                    const stats = this.getCurrentStats();
+                    const updatedBaseStats = {
+                        activeUsers: stats.activeUsers,
+                        transactionsValue: stats.transactionsValue,
+                        lastUpdate: new Date().getTime(),
+                        daysSinceStart: stats.daysSinceLastUpdate
+                    };
+                    localStorage.setItem('orbytpay_base_stats', JSON.stringify(updatedBaseStats));
+                }, 24 * 60 * 60 * 1000); // 24 hours
+            }
+        }
+
+        // Initialize the statistics updater when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            new StatisticsUpdater();
+        });
+
+        // Additional real-time effects for user engagement
+        function addRealTimeEffects() {
+            // Simulate live user activity
+            const userActivityIndicators = document.querySelectorAll('.status-indicator');
+            userActivityIndicators.forEach(indicator => {
+                setInterval(() => {
+                    indicator.style.opacity = '0.5';
+                    setTimeout(() => {
+                        indicator.style.opacity = '1';
+                    }, 200);
+                }, Math.random() * 10000 + 5000); // Random pulse between 5-15 seconds
+            });
+
+            // Update "last updated" timestamps
+            const statusElements = document.querySelectorAll('[data-timestamp]');
+            statusElements.forEach(element => {
+                setInterval(() => {
+                    const minutes = Math.floor(Math.random() * 5) + 1;
+                    element.textContent = `Last updated: ${minutes} minute${minutes > 1 ? 's' : ''} ago`;
+                }, 60000); // Update every minute
+            });
+        }
+
+        // Initialize real-time effects
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(addRealTimeEffects, 2000); // Start after 2 seconds
+        });
+
+        // Enhanced counter animation with more realistic increments
+        function enhancedCounterAnimation() {
+            const counters = document.querySelectorAll('.stat-number');
+            
+            counters.forEach(counter => {
+                if (counter.id === 'activeUsers' || counter.id === 'transactionsProcessed') {
+                    // These are handled by StatisticsUpdater
+                    return;
+                }
+                
+                const target = counter.textContent;
+                const numericTarget = parseFloat(target.replace(/[^\d.]/g, ''));
+                
+                if (!isNaN(numericTarget)) {
+                    let current = 0;
+                    const increment = numericTarget / 100;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= numericTarget) {
+                            current = numericTarget;
+                            clearInterval(timer);
+                        }
+                        
+                        // Format the number back to its original format
+                        if (target.includes('K')) {
+                            counter.textContent = (current / 1000).toFixed(1) + 'K';
+                        } else if (target.includes('M')) {
+                            counter.textContent = (current / 1000000).toFixed(1) + 'M';
+                        } else if (target.includes('%')) {
+                            counter.textContent = current.toFixed(2) + '%';
+                        } else if (target.includes('s')) {
+                            counter.textContent = current.toFixed(1) + 's';
+                        } else {
+                            counter.textContent = Math.floor(current).toLocaleString();
+                        }
+                    }, 20);
+                }
+            });
+        }
+
+        // Currency Converter Functionality
+        class CurrencyConverter {
+            constructor() {
+                this.exchangeRates = {
+                    // Base rates (USD = 1)
+                    'USD': 1,
+                    'EUR': 0.85,
+                    'NGN': 750,
+                    'GHS': 12.5,
+                    'KES': 150,
+                    'ZAR': 18.5,
+                    'EGP': 31,
+                    'MAD': 10.2,
+                    'TND': 3.1
+                };
+                this.initializeConverter();
+            }
+
+            initializeConverter() {
+                const fromAmountInput = document.getElementById('fromAmount');
+                const toAmountInput = document.getElementById('toAmount');
+                const fromCurrencySelect = document.getElementById('fromCurrency');
+                const toCurrencySelect = document.getElementById('toCurrency');
+                const swapButton = document.getElementById('swapCurrencies');
+
+                if (!fromAmountInput || !toAmountInput || !fromCurrencySelect || !toCurrencySelect) {
+                    return; // Elements not found, converter not on this page
+                }
+
+                // Initial conversion
+                this.convertCurrency();
+
+                // Add event listeners
+                fromAmountInput.addEventListener('input', () => this.convertCurrency());
+                fromCurrencySelect.addEventListener('change', () => this.convertCurrency());
+                toCurrencySelect.addEventListener('change', () => this.convertCurrency());
+                
+                if (swapButton) {
+                    swapButton.addEventListener('click', () => this.swapCurrencies());
+                }
+
+                // Update rates every 30 seconds to simulate real-time
+                setInterval(() => {
+                    this.updateRates();
+                    this.convertCurrency();
+                }, 30000);
+            }
+
+            convertCurrency() {
+                const fromAmount = parseFloat(document.getElementById('fromAmount').value) || 0;
+                const fromCurrency = document.getElementById('fromCurrency').value;
+                const toCurrency = document.getElementById('toCurrency').value;
+                const toAmountInput = document.getElementById('toAmount');
+
+                if (fromAmount === 0) {
+                    toAmountInput.value = '0.00';
+                    return;
+                }
+
+                // Convert to USD first, then to target currency
+                const fromRate = this.exchangeRates[fromCurrency];
+                const toRate = this.exchangeRates[toCurrency];
+                
+                const usdAmount = fromAmount / fromRate;
+                const convertedAmount = usdAmount * toRate;
+
+                toAmountInput.value = convertedAmount.toFixed(2);
+            }
+
+            swapCurrencies() {
+                const fromCurrencySelect = document.getElementById('fromCurrency');
+                const toCurrencySelect = document.getElementById('toCurrency');
+                const fromAmountInput = document.getElementById('fromAmount');
+                const toAmountInput = document.getElementById('toAmount');
+
+                // Swap currency selections
+                const tempCurrency = fromCurrencySelect.value;
+                fromCurrencySelect.value = toCurrencySelect.value;
+                toCurrencySelect.value = tempCurrency;
+
+                // Swap amounts
+                const tempAmount = fromAmountInput.value;
+                fromAmountInput.value = toAmountInput.value;
+                
+                // Recalculate
+                this.convertCurrency();
+            }
+
+            updateRates() {
+                // Simulate small fluctuations in exchange rates
+                Object.keys(this.exchangeRates).forEach(currency => {
+                    if (currency !== 'USD') {
+                        const fluctuation = (Math.random() - 0.5) * 0.02; // ±1% fluctuation
+                        this.exchangeRates[currency] *= (1 + fluctuation);
+                    }
+                });
+            }
+        }
+
+        // Calculator Functionality
+        class CalculatorManager {
+            constructor() {
+                this.initializeCalculators();
+            }
+
+            initializeCalculators() {
+                // Tab switching
+                const tabButtons = document.querySelectorAll('.tab-button');
+                const calculatorTabs = document.querySelectorAll('.calculator-tab');
+
+                tabButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const tabName = button.getAttribute('data-tab');
+                        
+                        // Update active tab button
+                        tabButtons.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                        
+                        // Update active calculator
+                        calculatorTabs.forEach(tab => {
+                            tab.classList.remove('active');
+                            tab.style.display = 'none';
+                        });
+                        
+                        const activeTab = document.getElementById(tabName + '-calculator');
+                        if (activeTab) {
+                            activeTab.classList.add('active');
+                            activeTab.style.display = 'block';
+                        }
+                    });
+                });
+
+                // Pricing Calculator
+                this.initializePricingCalculator();
+                
+                // ROI Calculator
+                this.initializeROICalculator();
+                
+                // Comparison Calculator
+                this.initializeComparisonCalculator();
+            }
+
+            initializePricingCalculator() {
+                const amountInput = document.getElementById('transactionAmount');
+                const typeSelect = document.getElementById('transactionType');
+                const currencySelect = document.getElementById('pricingCurrency');
+                const resultElement = document.getElementById('pricingResult');
+
+                if (!amountInput || !typeSelect || !currencySelect || !resultElement) return;
+
+                const calculatePricing = () => {
+                    const amount = parseFloat(amountInput.value) || 0;
+                    const type = typeSelect.value;
+                    const currency = currencySelect.value;
+
+                    let feePercentage = 0;
+                    switch (type) {
+                        case 'domestic': feePercentage = 0.5; break;
+                        case 'international': feePercentage = 1.2; break;
+                        case 'crypto': feePercentage = 0.8; break;
+                        case 'merchant': feePercentage = 0.3; break;
+                    }
+
+                    const fee = (amount * feePercentage) / 100;
+                    const currencySymbol = currency === 'USD' ? '$' : currency === 'EUR' ? '€' : currency;
+                    
+                    resultElement.textContent = `${currencySymbol}${fee.toFixed(2)}`;
+                };
+
+                amountInput.addEventListener('input', calculatePricing);
+                typeSelect.addEventListener('change', calculatePricing);
+                currencySelect.addEventListener('change', calculatePricing);
+                
+                calculatePricing(); // Initial calculation
+            }
+
+            initializeROICalculator() {
+                const volumeInput = document.getElementById('monthlyVolume');
+                const currentFeeInput = document.getElementById('currentFee');
+                const orbytFeeInput = document.getElementById('orbytFee');
+                const resultElement = document.getElementById('roiResult');
+
+                if (!volumeInput || !currentFeeInput || !orbytFeeInput || !resultElement) return;
+
+                const calculateROI = () => {
+                    const volume = parseFloat(volumeInput.value) || 0;
+                    const currentFee = parseFloat(currentFeeInput.value) || 0;
+                    const orbytFee = parseFloat(orbytFeeInput.value) || 0;
+
+                    const currentCost = (volume * currentFee) / 100;
+                    const orbytCost = (volume * orbytFee) / 100;
+                    const savings = currentCost - orbytCost;
+
+                    resultElement.textContent = `$${savings.toFixed(0)}`;
+                };
+
+                volumeInput.addEventListener('input', calculateROI);
+                currentFeeInput.addEventListener('input', calculateROI);
+                orbytFeeInput.addEventListener('input', calculateROI);
+                
+                calculateROI(); // Initial calculation
+            }
+
+            initializeComparisonCalculator() {
+                const amountInput = document.getElementById('compareAmount');
+                const fromCountrySelect = document.getElementById('fromCountry');
+                const toCountrySelect = document.getElementById('toCountry');
+
+                if (!amountInput || !fromCountrySelect || !toCountrySelect) return;
+
+                const calculateComparison = () => {
+                    const amount = parseFloat(amountInput.value) || 0;
+                    const orbytFee = amount * 0.012; // 1.2%
+                    const competitorFee = amount * 0.0287; // 2.87%
+                    const savings = competitorFee - orbytFee;
+
+                    // Update the comparison results
+                    const orbytResult = document.getElementById('orbytFeeResult');
+                    const competitorResult = document.getElementById('competitorFeeResult');
+                    const savingsResult = document.getElementById('savingsResult');
+
+                    if (orbytResult) orbytResult.textContent = `$${orbytFee.toFixed(2)}`;
+                    if (competitorResult) competitorResult.textContent = `$${competitorFee.toFixed(2)}`;
+                    if (savingsResult) savingsResult.textContent = `$${savings.toFixed(2)}`;
+                };
+
+                amountInput.addEventListener('input', calculateComparison);
+                fromCountrySelect.addEventListener('change', calculateComparison);
+                toCountrySelect.addEventListener('change', calculateComparison);
+                
+                calculateComparison(); // Initial calculation
+            }
+        }
+
+        // FAQ Functionality
+        function initializeFAQ() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const faqItem = question.parentElement;
+                    const answer = faqItem.querySelector('.faq-answer');
+                    const isActive = question.classList.contains('active');
+                    
+                    // Close all other FAQs
+                    faqQuestions.forEach(q => {
+                        q.classList.remove('active');
+                        q.parentElement.querySelector('.faq-answer').classList.remove('active');
+                    });
+                    
+                    // Toggle current FAQ
+                    if (!isActive) {
+                        question.classList.add('active');
+                        answer.classList.add('active');
+                    }
+                });
+            });
+        }
+
+        // Initialize all functionality when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Initializing OrbytPay website functionality...');
+            
+            try {
+                new CurrencyConverter();
+                console.log('Currency converter initialized');
+            } catch (error) {
+                console.log('Currency converter initialization failed:', error);
+            }
+            
+            try {
+                new CalculatorManager();
+                console.log('Calculator manager initialized');
+            } catch (error) {
+                console.log('Calculator manager initialization failed:', error);
+            }
+            
+            try {
+                initializeFAQ();
+                console.log('FAQ initialized');
+            } catch (error) {
+                console.log('FAQ initialization failed:', error);
+            }
+
+            // Additional interactive features
+            initializeChatWidget();
+            initializeLanguageSelector();
+            initializeVoiceSearch();
+            initializeThemeToggle();
+            initializeAPIButtons();
+            initializeBlogLinks();
+            initializeAfricaMap();
+        });
+
+        // Interactive Africa Map
+        function initializeAfricaMap() {
+            const countries = document.querySelectorAll('.africa-country');
+            const tooltip = document.getElementById('mapTooltip');
+            
+            if (!countries.length || !tooltip) return;
+
+            // Country data with user counts (realistic distribution)
+            const countryData = {
+                'Nigeria': { users: 850, transactions: '₦2.1M' },
+                'South Africa': { users: 420, transactions: 'R1.8M' },
+                'Kenya': { users: 380, transactions: 'KSh1.2M' },
+                'Ghana': { users: 290, transactions: '₵890K' },
+                'Egypt': { users: 250, transactions: '£E750K' },
+                'Morocco': { users: 180, transactions: 'MAD650K' },
+                'Ethiopia': { users: 160, transactions: 'Br480K' },
+                'Tanzania': { users: 140, transactions: 'TSh420K' },
+                'Uganda': { users: 120, transactions: 'USh380K' },
+                'Algeria': { users: 110, transactions: 'DA320K' },
+                'Angola': { users: 95, transactions: 'Kz280K' },
+                'Mozambique': { users: 85, transactions: 'MT240K' },
+                'Madagascar': { users: 75, transactions: 'Ar210K' },
+                'Cameroon': { users: 70, transactions: 'XAF180K' },
+                'Ivory Coast': { users: 65, transactions: 'XOF160K' },
+                'Zambia': { users: 55, transactions: 'ZK140K' },
+                'Senegal': { users: 50, transactions: 'XOF120K' },
+                'Chad': { users: 45, transactions: 'XAF110K' },
+                'Somalia': { users: 40, transactions: 'SOS95K' },
+                'Zimbabwe': { users: 38, transactions: 'ZWL85K' },
+                'Guinea': { users: 35, transactions: 'GNF80K' },
+                'Rwanda': { users: 32, transactions: 'RWF75K' },
+                'Benin': { users: 30, transactions: 'XOF70K' },
+                'Burundi': { users: 28, transactions: 'BIF65K' },
+                'Tunisia': { users: 25, transactions: 'TND60K' },
+                'South Sudan': { users: 22, transactions: 'SSP55K' },
+                'Togo': { users: 20, transactions: 'XOF50K' },
+                'Sierra Leone': { users: 18, transactions: 'SLL45K' },
+                'Libya': { users: 15, transactions: 'LYD40K' },
+                'Liberia': { users: 12, transactions: 'LRD35K' },
+                'Mauritania': { users: 10, transactions: 'MRU30K' },
+                'Lesotho': { users: 8, transactions: 'LSL25K' },
+                'Gambia': { users: 6, transactions: 'GMD20K' },
+                'Guinea-Bissau': { users: 5, transactions: 'XOF15K' },
+                'Gabon': { users: 4, transactions: 'XAF12K' },
+                'Eswatini': { users: 3, transactions: 'SZL10K' },
+                'Mauritius': { users: 2, transactions: 'MUR8K' },
+                'Djibouti': { users: 2, transactions: 'DJF6K' },
+                'Comoros': { users: 1, transactions: 'KMF5K' },
+                'Cape Verde': { users: 1, transactions: 'CVE4K' },
+                'São Tomé and Príncipe': { users: 1, transactions: 'STN3K' },
+                'Seychelles': { users: 1, transactions: 'SCR2K' }
+            };
+
+            countries.forEach(country => {
+                const countryName = country.getAttribute('data-country');
+                const data = countryData[countryName] || { users: 0, transactions: '0' };
+                
+                // Color countries based on user activity
+                if (data.users > 200) {
+                    country.style.fill = '#008A3D'; // Dark green for high activity
+                } else if (data.users > 50) {
+                    country.style.fill = '#00B04F'; // Primary green for medium activity
+                } else {
+                    country.style.fill = '#4CAF50'; // Light green for low activity
+                }
+
+                country.addEventListener('mouseenter', (e) => {
+                    tooltip.innerHTML = `
+                        <strong>${countryName}</strong><br>
+                        Users: ${data.users.toLocaleString()}<br>
+                        Monthly Volume: ${data.transactions}
+                    `;
+                    tooltip.style.opacity = '1';
+                });
+
+                country.addEventListener('mousemove', (e) => {
+                    const rect = e.target.closest('.map-placeholder').getBoundingClientRect();
+                    tooltip.style.left = (e.clientX - rect.left + 10) + 'px';
+                    tooltip.style.top = (e.clientY - rect.top - 10) + 'px';
+                });
+
+                country.addEventListener('mouseleave', () => {
+                    tooltip.style.opacity = '0';
+                });
+
+                country.addEventListener('click', () => {
+                    // Show detailed country information
+                    const modal = createModal(`OrbytPay in ${countryName}`, `
+                        <div style="text-align: center; padding: 1rem;">
+                            <h3 style="color: var(--primary-green); margin-bottom: 1rem;">${countryName}</h3>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+                                <div>
+                                    <div style="font-size: 2rem; font-weight: bold; color: var(--primary-green);">${data.users.toLocaleString()}</div>
+                                    <div style="color: var(--medium-gray);">Active Users</div>
+                                </div>
+                                <div>
+                                    <div style="font-size: 2rem; font-weight: bold; color: var(--primary-green);">${data.transactions}</div>
+                                    <div style="color: var(--medium-gray);">Monthly Volume</div>
+                                </div>
+                            </div>
+                            <p style="margin: 1rem 0; line-height: 1.6;">
+                                OrbytPay is proud to serve customers in ${countryName} with secure, fast, and affordable financial services. 
+                                Our local partnerships ensure compliance with regional regulations and support for local payment methods.
+                            </p>
+                            <div style="margin-top: 2rem;">
+                                <button onclick="this.closest('[style*=\"position: fixed\"]').remove()" 
+                                        style="background: var(--primary-green); color: white; padding: 0.75rem 2rem; border: none; border-radius: 25px; cursor: pointer;">
+                                    Learn More About Our Services
+                                </button>
+                            </div>
+                        </div>
+                    `);
+                    document.body.appendChild(modal);
+                });
+            });
+
+            // Add pulsing animation to high-activity countries
+            setInterval(() => {
+                countries.forEach(country => {
+                    const countryName = country.getAttribute('data-country');
+                    const data = countryData[countryName] || { users: 0 };
+                    
+                    if (data.users > 200) {
+                        country.style.filter = 'drop-shadow(0 0 8px rgba(0, 176, 79, 0.8))';
+                        setTimeout(() => {
+                            country.style.filter = 'none';
+                        }, 1000);
+                    }
+                });
+            }, 3000);
+        }
+
+        // Chat Widget Functionality
+        function initializeChatWidget() {
+            const chatToggle = document.getElementById('chatToggle');
+            const chatWindow = document.getElementById('chatWindow');
+            const chatClose = document.getElementById('chatClose');
+            const chatInput = document.getElementById('chatInput');
+            const chatSend = document.getElementById('chatSend');
+            const chatBody = document.getElementById('chatBody');
+
+            if (!chatToggle || !chatWindow) return;
+
+            chatToggle.addEventListener('click', () => {
+                chatWindow.classList.toggle('active');
+            });
+
+            if (chatClose) {
+                chatClose.addEventListener('click', () => {
+                    chatWindow.classList.remove('active');
+                });
+            }
+
+            if (chatSend && chatInput && chatBody) {
+                const sendMessage = () => {
+                    const message = chatInput.value.trim();
+                    if (!message) return;
+
+                    // Add user message
+                    const userMessage = document.createElement('div');
+                    userMessage.className = 'chat-message user';
+                    userMessage.innerHTML = `<div class="message-content">${message}</div>`;
+                    chatBody.appendChild(userMessage);
+
+                    // Clear input
+                    chatInput.value = '';
+
+                    // Simulate bot response
+                    setTimeout(() => {
+                        const botMessage = document.createElement('div');
+                        botMessage.className = 'chat-message bot';
+                        botMessage.innerHTML = `<div class="message-content">Thank you for your message! Our team will get back to you shortly. Is there anything specific I can help you with regarding OrbytPay services?</div>`;
+                        chatBody.appendChild(botMessage);
+                        chatBody.scrollTop = chatBody.scrollHeight;
+                    }, 1000);
+
+                    chatBody.scrollTop = chatBody.scrollHeight;
+                };
+
+                chatSend.addEventListener('click', sendMessage);
+                chatInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') sendMessage();
+                });
+            }
+        }
+
+        // Language Selector Functionality
+        function initializeLanguageSelector() {
+            const languageBtn = document.getElementById('languageBtn');
+            const languageDropdown = document.getElementById('languageDropdown');
+            const currentLang = document.getElementById('currentLang');
+
+            if (!languageBtn || !languageDropdown) return;
+
+            languageBtn.addEventListener('click', () => {
+                languageDropdown.classList.toggle('active');
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!languageBtn.contains(e.target) && !languageDropdown.contains(e.target)) {
+                    languageDropdown.classList.remove('active');
+                }
+            });
+
+            // Handle language selection
+            const languageOptions = document.querySelectorAll('.language-option');
+            languageOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    const lang = option.getAttribute('data-lang');
+                    const langText = option.textContent.split(' ')[1]; // Get language name
+                    if (currentLang) {
+                        currentLang.textContent = lang.toUpperCase();
+                    }
+                    languageDropdown.classList.remove('active');
+                    
+                    // Here you would typically implement actual language switching
+                    console.log('Language switched to:', lang);
+                });
+            });
+        }
+
+        // Voice Search Functionality
+        function initializeVoiceSearch() {
+            const voiceSearchBtn = document.getElementById('voiceSearch');
+            
+            if (!voiceSearchBtn) return;
+
+            voiceSearchBtn.addEventListener('click', () => {
+                if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+                    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                    const recognition = new SpeechRecognition();
+                    
+                    recognition.continuous = false;
+                    recognition.interimResults = false;
+                    recognition.lang = 'en-US';
+
+                    recognition.onstart = () => {
+                        voiceSearchBtn.classList.add('listening');
+                        console.log('Voice search started');
+                    };
+
+                    recognition.onresult = (event) => {
+                        const transcript = event.results[0][0].transcript;
+                        console.log('Voice search result:', transcript);
+                        
+                        // Here you would implement search functionality
+                        alert(`You said: "${transcript}". Voice search functionality would be implemented here.`);
+                    };
+
+                    recognition.onerror = (event) => {
+                        console.error('Voice search error:', event.error);
+                        voiceSearchBtn.classList.remove('listening');
+                    };
+
+                    recognition.onend = () => {
+                        voiceSearchBtn.classList.remove('listening');
+                    };
+
+                    recognition.start();
+                } else {
+                    alert('Voice search is not supported in your browser.');
+                }
+            });
+        }
+
+        // Theme Toggle Functionality
+        function initializeThemeToggle() {
+            const themeToggle = document.getElementById('themeToggle');
+            
+            if (!themeToggle) return;
+
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('orbytpay-theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+                updateThemeIcon(savedTheme);
+            }
+
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('orbytpay-theme', newTheme);
+                updateThemeIcon(newTheme);
+            });
+
+            function updateThemeIcon(theme) {
+                const icon = themeToggle.querySelector('i');
+                if (icon) {
+                    icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+                }
+            }
+        }
+
+        // API Documentation and Sandbox Functionality
+        function initializeAPIButtons() {
+            const viewDocsBtn = document.getElementById('viewDocsBtn');
+            const trySandboxBtn = document.getElementById('trySandboxBtn');
+
+            if (viewDocsBtn) {
+                viewDocsBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    // Create modal for documentation
+                    const modal = createModal('API Documentation', `
+                        <div style="max-height: 400px; overflow-y: auto;">
+                            <h3>OrbytPay API v1.0</h3>
+                            <p>Welcome to the OrbytPay API documentation. Our RESTful API allows you to integrate payment processing into your applications.</p>
+                            
+                            <h4>Authentication</h4>
+                            <p>All API requests require authentication using your API key in the Authorization header:</p>
+                            <pre style="background: #f5f5f5; padding: 1rem; border-radius: 5px; margin: 1rem 0;">Authorization: Bearer YOUR_API_KEY</pre>
+                            
+                            <h4>Base URL</h4>
+                            <pre style="background: #f5f5f5; padding: 1rem; border-radius: 5px; margin: 1rem 0;">https://api.orbytpay.com/v1</pre>
+                            
+                            <h4>Available Endpoints</h4>
+                            <ul style="margin: 1rem 0;">
+                                <li><strong>POST /transactions</strong> - Create a new transaction</li>
+                                <li><strong>GET /transactions/{id}</strong> - Get transaction details</li>
+                                <li><strong>GET /rates</strong> - Get current exchange rates</li>
+                                <li><strong>POST /webhooks</strong> - Configure webhook endpoints</li>
+                                <li><strong>GET /balance</strong> - Get account balance</li>
+                                <li><strong>POST /transfers</strong> - Initiate money transfer</li>
+                            </ul>
+                            
+                            <h4>Rate Limits</h4>
+                            <p>API requests are limited to 1000 requests per hour per API key.</p>
+                            
+                            <h4>Support</h4>
+                            <p>For technical support, contact our developer team at <a href="mailto:developers@orbytpay.com">developers@orbytpay.com</a></p>
+                        </div>
+                    `);
+                    
+                    document.body.appendChild(modal);
+                });
+            }
+
+            if (trySandboxBtn) {
+                trySandboxBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    // Create modal for sandbox
+                    const modal = createModal('API Sandbox', `
+                        <div style="max-height: 400px; overflow-y: auto;">
+                            <h3>Try OrbytPay API</h3>
+                            <p>Test our API endpoints in a safe sandbox environment.</p>
+                            
+                            <div style="margin: 1rem 0;">
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Select Endpoint:</label>
+                                <select id="sandboxEndpoint" style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 5px;">
+                                    <option value="transactions">POST /transactions</option>
+                                    <option value="rates">GET /rates</option>
+                                    <option value="balance">GET /balance</option>
+                                </select>
+                            </div>
+                            
+                            <div style="margin: 1rem 0;">
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Request Body:</label>
+                                <textarea id="sandboxRequest" style="width: 100%; height: 120px; padding: 0.5rem; border: 1px solid #ddd; border-radius: 5px; font-family: monospace;" placeholder='{"amount": 1000, "currency": "NGN", "recipient": "customer@example.com"}'></textarea>
+                            </div>
+                            
+                            <button onclick="executeSandboxRequest()" style="background: var(--primary-green); color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 5px; cursor: pointer; margin-bottom: 1rem;">Execute Request</button>
+                            
+                            <div style="margin: 1rem 0;">
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Response:</label>
+                                <pre id="sandboxResponse" style="background: #f5f5f5; padding: 1rem; border-radius: 5px; min-height: 100px; white-space: pre-wrap;">Click "Execute Request" to see the response</pre>
+                            </div>
+                        </div>
+                    `);
+                    
+                    document.body.appendChild(modal);
+                });
+            }
+        }
+
+        // Blog Read More Functionality
+        function initializeBlogLinks() {
+            const blogLinks = document.querySelectorAll('.blog-link[data-blog]');
+            
+            blogLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    const blogType = link.getAttribute('data-blog');
+                    let title, content;
+                    
+                    switch(blogType) {
+                        case 'digital-payments-africa':
+                            title = 'The Future of Digital Payments in Africa';
+                            content = `
+                                <div style="max-height: 400px; overflow-y: auto; line-height: 1.6;">
+                                    <p><strong>Published:</strong> December 20, 2024 | <strong>Category:</strong> Fintech</p>
+                                    
+                                    <p>Africa is experiencing a digital payment revolution that's reshaping the entire financial landscape. Mobile money services have grown exponentially, with over 548 million registered accounts across the continent as of 2024.</p>
+                                    
+                                    <h4>The Mobile Money Boom</h4>
+                                    <p>Countries like Kenya, Ghana, and Tanzania are leading the charge with innovative mobile payment solutions. The success of services like M-Pesa has demonstrated the potential for leapfrogging traditional banking infrastructure.</p>
+                                    
+                                    <h4>Blockchain Integration</h4>
+                                    <p>Blockchain technology is being integrated into payment systems to provide:</p>
+                                    <ul>
+                                        <li>Enhanced security and transparency</li>
+                                        <li>Reduced transaction costs</li>
+                                        <li>Faster cross-border payments</li>
+                                        <li>Financial inclusion for the unbanked</li>
+                                    </ul>
+                                    
+                                    <h4>OrbytPay's Role</h4>
+                                    <p>At OrbytPay, we're contributing to this transformation by providing seamless, secure, and affordable payment solutions that work across all African countries. Our platform combines the best of mobile money and blockchain technology.</p>
+                                    
+                                    <h4>Looking Ahead</h4>
+                                    <p>The future of African fintech looks bright, with continued innovation in areas like AI-powered fraud detection, biometric authentication, and sustainable finance solutions.</p>
+                                </div>
+                            `;
+                            break;
+                            
+                        case 'security-features':
+                            title = 'Enhanced Security Features Now Live';
+                            content = `
+                                <div style="max-height: 400px; overflow-y: auto; line-height: 1.6;">
+                                    <p><strong>Published:</strong> December 18, 2024 | <strong>Category:</strong> Security</p>
+                                    
+                                    <p>We're excited to announce the launch of our most advanced security features yet, designed to keep your transactions safer than ever before.</p>
+                                    
+                                    <h4>Advanced Biometric Authentication</h4>
+                                    <p>Our new biometric system now supports:</p>
+                                    <ul>
+                                        <li>Fingerprint recognition</li>
+                                        <li>Face ID authentication</li>
+                                        <li>Voice pattern recognition</li>
+                                        <li>Behavioral biometrics</li>
+                                    </ul>
+                                    
+                                    <h4>AI-Powered Fraud Detection</h4>
+                                    <p>Our machine learning algorithms now analyze transaction patterns in real-time to detect and prevent fraudulent activities. The system learns from millions of transactions to identify suspicious behavior instantly.</p>
+                                    
+                                    <h4>Enhanced Encryption</h4>
+                                    <p>We've upgraded to military-grade AES-256 encryption for all data transmission and storage, ensuring your financial information remains completely secure.</p>
+                                    
+                                    <h4>Multi-Layer Security</h4>
+                                    <p>Every transaction now goes through multiple security checkpoints:</p>
+                                    <ul>
+                                        <li>Device verification</li>
+                                        <li>Location-based authentication</li>
+                                        <li>Transaction amount analysis</li>
+                                        <li>Real-time risk assessment</li>
+                                    </ul>
+                                    
+                                    <p>These features are now available to all OrbytPay users at no additional cost.</p>
+                                </div>
+                            `;
+                            break;
+                            
+                        case 'expansion-announcement':
+                            title = 'OrbytPay Expands to 10 New African Countries';
+                            content = `
+                                <div style="max-height: 400px; overflow-y: auto; line-height: 1.6;">
+                                    <p><strong>Published:</strong> December 15, 2024 | <strong>Category:</strong> Expansion</p>
+                                    
+                                    <p>We're thrilled to announce our expansion into 10 new African countries, bringing our total coverage to 54 nations across the continent.</p>
+                                    
+                                    <h4>New Markets</h4>
+                                    <p>Our services are now available in:</p>
+                                    <ul>
+                                        <li>Central African Republic</li>
+                                        <li>Chad</li>
+                                        <li>Republic of the Congo</li>
+                                        <li>Democratic Republic of Congo</li>
+                                        <li>Equatorial Guinea</li>
+                                        <li>Gabon</li>
+                                        <li>São Tomé and Príncipe</li>
+                                        <li>Burundi</li>
+                                        <li>Comoros</li>
+                                        <li>Djibouti</li>
+                                    </ul>
+                                    
+                                    <h4>Local Partnerships</h4>
+                                    <p>We've partnered with leading financial institutions in each country to ensure seamless integration with local banking systems and compliance with regional regulations.</p>
+                                    
+                                    <h4>Currency Support</h4>
+                                    <p>Our platform now supports additional local currencies, including:</p>
+                                    <ul>
+                                        <li>Central African CFA franc (XAF)</li>
+                                        <li>Congolese franc (CDF)</li>
+                                        <li>Burundian franc (BIF)</li>
+                                        <li>Djiboutian franc (DJF)</li>
+                                    </ul>
+                                    
+                                    <h4>What This Means</h4>
+                                    <p>This expansion allows us to serve thousands more users and facilitate seamless money transfers across the entire African continent. Users can now send money to family and friends in any African country with competitive rates and instant processing.</p>
+                                    
+                                    <p>We're committed to financial inclusion and making digital payments accessible to everyone across Africa.</p>
+                                </div>
+                            `;
+                            break;
+                    }
+                    
+                    const modal = createModal(title, content);
+                    document.body.appendChild(modal);
+                });
+            });
+        }
+
+        // Modal Creation Helper
+        function createModal(title, content) {
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+            `;
+            
+            modal.innerHTML = `
+                <div style="background: white; border-radius: 15px; max-width: 600px; width: 90%; max-height: 80%; overflow: hidden; position: relative;">
+                    <div style="padding: 2rem; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
+                        <h2 style="margin: 0; color: var(--primary-green);">${title}</h2>
+                        <button onclick="this.closest('[style*=\"position: fixed\"]').remove()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #666;">×</button>
+                    </div>
+                    <div style="padding: 2rem;">
+                        ${content}
+                    </div>
+                </div>
+            `;
+            
+            // Close modal when clicking outside
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.remove();
+                }
+            });
+            
+            return modal;
+        }
+
+        // Sandbox Request Execution
+        function executeSandboxRequest() {
+            const endpoint = document.getElementById('sandboxEndpoint').value;
+            const requestBody = document.getElementById('sandboxRequest').value;
+            const responseElement = document.getElementById('sandboxResponse');
+            
+            // Simulate API response
+            let response;
+            switch(endpoint) {
+                case 'transactions':
+                    response = {
+                        "id": "txn_" + Math.random().toString(36).substr(2, 9),
+                        "status": "success",
+                        "amount": 1000,
+                        "currency": "NGN",
+                        "recipient": "customer@example.com",
+                        "fee": 12.50,
+                        "created_at": new Date().toISOString(),
+                        "estimated_delivery": "2-5 minutes"
+                    };
+                    break;
+                case 'rates':
+                    response = {
+                        "base": "USD",
+                        "rates": {
+                            "NGN": 750.25,
+                            "GHS": 12.45,
+                            "KES": 150.30,
+                            "ZAR": 18.75,
+                            "EGP": 31.20
+                        },
+                        "last_updated": new Date().toISOString()
+                    };
+                    break;
+                case 'balance':
+                    response = {
+                        "account_id": "acc_" + Math.random().toString(36).substr(2, 9),
+                        "available_balance": 15420.75,
+                        "currency": "USD",
+                        "pending_transactions": 2,
+                        "last_transaction": new Date().toISOString()
+                    };
+                    break;
+            }
+            
+            responseElement.textContent = JSON.stringify(response, null, 2);
+        }
+
+        // Lazy loading for images
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+
+        // Service worker registration for PWA capabilities
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(function(err) {
+                        console.log('ServiceWorker registration failed');
+                    });
+            });
+        }
+
+        // Add ripple effect to buttons
+        document.querySelectorAll('.btn-primary, .btn-secondary, .cta-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add CSS for ripple effect
+        const style = document.createElement('style');
+        style.textContent = `
+            .btn-primary, .btn-secondary, .cta-button {
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.3);
+                transform: scale(0);
+                animation: ripple-animation 0.6s linear;
+                pointer-events: none;
+            }
+            
+            @keyframes ripple-animation {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
